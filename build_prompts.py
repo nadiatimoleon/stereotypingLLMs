@@ -21,12 +21,16 @@ def build_templates_df(templates):
 
 
 def build_prompt_for_profile(
-      profile, 
-      prompt_template, 
-      include_gender=True
-):
-    prompt = prompt_template
-    if include_gender:
+      profile_id,
+      prompt_template_id,
+      synthetic_profiles,
+      prompt_df,
+      gender_included=True
+    ):
+    profile = synthetic_profiles[profile_id-1] # profile_id is 1-indexed 
+
+    prompt = prompt_df[prompt_df['prompt_id'] == prompt_template_id]['text'].values[0]
+    if gender_included:
       prompt = prompt.replace('[gender]', profile['gender'])
     else:
       prompt += "Feel free to make assumptions on the gender of the individual (male or female)" 

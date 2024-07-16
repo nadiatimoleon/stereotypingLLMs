@@ -23,7 +23,7 @@ logging.basicConfig(
 )
 
 # Configure gemini
-api_key = "" # replace with your API key
+api_key = "YOUR_API_KEY_HERE" # replace with your API key
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
